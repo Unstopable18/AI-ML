@@ -1,4 +1,5 @@
 a="mother Board no:\t007"
+b=('M','o','t','h','e','r')
 print(a.capitalize())
 print(a.casefold())
 print(a.center(30,'*'))
@@ -21,3 +22,4 @@ print(a.isprintable())
 print(a.isspace())
 print(a.istitle())
 print(a.isupper())
+print('*'.join(b))
