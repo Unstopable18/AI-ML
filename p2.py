@@ -6,7 +6,7 @@ while num<100:
         break
     else:
         num+=5"""
-grocery=['Oil','Sugar','Daal','rice','wheat','spices','washing powder','tea','matchbox','poha','biscuits']
+"""grocery=['Oil','Sugar','Daal','rice','wheat','spices','washing powder','tea','matchbox','poha','biscuits']
 print(grocery)
 grocery.append('wicks')
 print(grocery)
@@ -21,8 +21,16 @@ n=len(grocery)
 for i in range (n):
     print(grocery[i])
     i+=1
-    
+
 grocery.remove('biscuits')
 print(grocery)
 grocery[0].remove('butter')
 print(grocery)
+grocery.insert(0,['butter'])
+print(grocery)
+grocery.pop(1)
+print(grocery)
+"""
+L = ['a', ['bb', 'cc'], ['dd', 'ee']]
+m=L[2].index('dd')
+print(m)
