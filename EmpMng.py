@@ -28,10 +28,33 @@ while type>=1 and type<=5:
     empId = input("Please enter Employee Id:\t")
     for i in range (len(allEmp)):
         if empId in allEmp[i]:
-            allEmp[i][1]= input("Enter Full Name:\t")
-            allEmp[i][2]==input("Enter Mobile No.:\t")
-            allEmp[i][3]==input("Enter Salary:\t")
-            print(" Modified successfully! ")
+            print("".center(50,'-'))
+            print("1:Update Full Name")
+            print("2:Update Mobile No.")
+            print("3:Update Salary")
+            print("4:Exit Update")
+            print("".center(50,'-'))
+            utype = int(input("Please select (1-4):\t"))
+            print("".center(50,'-'))
+            while utype>=1 and utype<=4:
+              if utype==1:
+                allEmp[i][1]=input("Enter Full Name:\t")
+                print(" Modified successfully! ")
+              elif utype==2:
+                allEmp[i][2]=input("Enter Mobile No.:\t")
+                print(" Modified successfully! ")
+              elif utype==3:
+                allEmp[i][3]=input("Enter Salary:\t")
+                print(" Modified successfully! ")
+              elif utype==4:
+                print(" Update Exited ")
+                break
+              print("".center(50,'-'))
+              print(allEmp)
+              print("".center(50,'-'))
+              utype = int(input("Please select Update type (1-4):\t"))
+            else:
+              print(" Invalid Input! ")
         else: 
           continue
   elif type==4:
