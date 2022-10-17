@@ -1,56 +1,56 @@
-print("1  Add user ")
-print("2  Delete user ")
-print("3  Modify the user ")
-print("4  Query the user ")
-print("5  exit ")
-
-fname=input("Enter First name:\t")
-mname=input("Enter Middle name:\t")
-lname=input("Enter Last name:\t")
-
+print("".center(50,'*'))
+print("1:Add")
+print("2:Delete")
+print("3:Update")
+print("4:Data Fetch")
+print("5:Exit")
+print("".center(50,'-'))
 allEmp=list()
-type = int(input(" Please select: "))
+type = int(input("Please select (1-5):\t"))
+print("".center(50,'*'))
 while type>=1 and type<=5:
   if type==1:
-    id = input(" Please enter the user's id:")
-    name = input(" Please enter the user's name: ")
-    pw = input(" Please enter user password: ")
-    allEmp.append([id,name,pw])
+    empId = input("Please enter Employee Id:\t")
+    name=input("Enter Full Name:\t")
+    mob=input("Enter Mobile No.:\t")
+    salary=input("Enter Salary:\t")
+    allEmp.append([empId,name,mob,salary])
     print(" Added successfully! ")
   elif type==2:
-    # Determine if the user is present ids There are 
-    id = input(" Please enter the user's id:")
+    empId = input("Please enter Employee Id:\t")
     for i in range (len(allEmp)):
-        if id in allEmp[i]:
+        if empId in allEmp[i]:
             allEmp.pop(i)
             print(" Deleted successfully! ")
-        else:# No user prompt was found 
+        else: 
           continue
   elif type==3:
-    # Determine if the user is present ids There are 
-    id = input(" Please enter the user's id:")
+    empId = input("Please enter Employee Id:\t")
     for i in range (len(allEmp)):
-        if id in allEmp[i]:
-            allEmp[i][1]= input(" Please enter the user's name :")
-            allEmp[i][2]= input(" Please enter the user's password :")
+        if empId in allEmp[i]:
+            allEmp[i][1]= input("Enter Full Name:\t")
+            allEmp[i][2]==input("Enter Mobile No.:\t")
+            allEmp[i][3]==input("Enter Salary:\t")
             print(" Modified successfully! ")
-        else:# No user prompt was found 
+        else: 
           continue
   elif type==4:
-    # Determine if the user is present ids There are 
-    id = input(" Please enter the user's id:")
+    empId = input("Please enter Employee Id:\t")
     for i in range (len(allEmp)):
-        if id in allEmp[i]:
-          print(" The user's id:",allEmp[i][0])
-          print(" The user name :",allEmp[i][1])
-          print(" The user password :",allEmp[i][2])
-          print(" Quried Successfully! ")
-        else:# No user prompt was found 
+        if empId in allEmp[i]:
+          print(" Employee empId:\t",allEmp[i][0])
+          print(" Full Name:\t",allEmp[i][1])
+          print(" Mobile No:\t",allEmp[i][2])
+          print(" Salary:\t",allEmp[i][3])
+          print(" Data Fetched Successfully! ")
+        else: 
           continue
   elif type==5:
-    print(" Thank You! ")
+    print(" Thank You! ".center(50,'*'))
     break
+  print("".center(50,'-'))
   print(allEmp)
-  type = int(input(" Please select: "))
+  print("".center(50,'*'))
+  type = int(input("Please select (1-5):\t"))
 else:
-  print(" Incorrect input! ")
+  print(" Invalid Input! ")
