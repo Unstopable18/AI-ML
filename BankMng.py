@@ -1,4 +1,4 @@
-from pFunction import *
+from BankMngFunction import *
 
 print("1:Create Account")
 print("2:Credit")
