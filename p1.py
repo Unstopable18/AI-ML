@@ -1,4 +1,4 @@
-a="mother Board no:\t007"
+"""a="mother Board no:\t007"
 b=('M','o','t','h','e','r')
 print(a.capitalize())
 print(a.casefold())
@@ -26,4 +26,9 @@ print('-'.join(b))
 print(a.ljust(30),'$$$$$$$$$$')
 print(a.lower())
 print('      hey There!!     '.lstrip())
-print(a.translate(a.maketrans('n','g')))
+print(a.translate(a.maketrans('n','g')))"""
+
+spam=tuple((66,))
+s=dict()
+ss=tuple(s)
+print(type(s))
