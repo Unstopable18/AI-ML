@@ -1,52 +1,12 @@
 {
     "bank_account": [
         {
-            "49757726": {
-                "name": "Vaishnavi",
-                "password": "Deshmukh",
-                "balance": 101500.0
-            }
-        },
-        {
-            "67100454": {
-                "name": "ravindra",
-                "password": "deshmukh",
-                "balance": 0
-            }
-        },
-        {
-            "67717886": {
-                "name": "sweety",
-                "password": "deshmukh",
-                "balance": 10000.0
-            }
-        },
-        {
-            "46749752": {
-                "name": "aaaaabbbbbccccc",
-                "password": "sssssssss",
-                "balance": 0
-            }
-        },
-        {
-            "47708251": {
-                "name": "aaabbbb",
-                "password": "mmmmm",
-                "balance": 0
-            }
-        },
-        {
-            "33814297": {
-                "name": "aaaaaaaaa",
-                "password": "zzzzzzzzzz",
-                "balance": 2000.0
-            }
-        },
-        {
-            "49768788": {
-                "name": "jjjjjj",
-                "password": "kkkkkkkkkk",
-                "balance": 0
+            "43247803": {
+                "name": "jafoi",
+                "password": "jire",
+                "balance": 0,
+                "date": "21/10/2022",
+                "time": "13:12:44 PM"
             }
         }
     ]
