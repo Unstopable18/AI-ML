@@ -75,10 +75,10 @@ def balance():
     
 
 def getData(ac):
-    f = open('sample.json',)        
+    f = open('sample.py',)        
     data = json.load(f)
     try:
-        for i in data['bank_account']:
+        for i in data['bannk_account']:
             for j in i:
                 if ac in j:
                     return print('Name:\t',i[ac]["name"],'\nPassword:\t',i[ac]["password"],'\nAccount No.:\t',ac,'\nBalance:\t',i[ac]["balance"],'\nDate:\t',i[ac]["date"],'\nTime:\t',i[ac]["time"])
@@ -88,7 +88,7 @@ def getData(ac):
     except Exception as msg:
         print(msg.__class__.__name__,' Occured!!!!')
 
-def write_json(new_data, filename='sample.json'):
+def write_json(new_data, filename='sample.py'):
 	with open(filename,'r+') as file:
 		file_data = json.load(file)
 		file_data["bank_account"].append(new_data)
