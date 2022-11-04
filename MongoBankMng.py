@@ -19,7 +19,7 @@ while type>=1 and type<=6:
     elif type==4:
         balance()
     elif type==5:
-        ac=input('Enter Account No.:\t')
+        ac=int(input('Enter Account No.:\t'))
         getData(ac)
     elif type==6:
         print(" Thank You for banking with us! ".center(50,'*'))

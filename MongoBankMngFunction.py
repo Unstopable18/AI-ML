@@ -1,73 +1,63 @@
 import datetime
 import random
-import json
 import pymongo
-    
+
+client=pymongo.MongoClient('mongodb+srv://vaishnavi:8806812990@cluster0.acsdz4a.mongodb.net/test')
+db=client['BankMng']
+collection=db['bankAc']
+
 def credit():
-    f = open('sample.json',)        
-    data = json.load(f)
     try:
         ac=int(input('Enter Account No.:\t'))
         try:
-            for i in data['bank_account']:
-                for j in i:
-                    if ac in j:
-                        amt=float(input('Enter amount to be credited:\t'))
-                        i[ac]["balance"]=float(i[ac]["balance"])+amt
-                        w_file=open('sample.json','w')
-                        json.dump(data,w_file,indent = 4)
-                        w_file.close()
-                        getData(ac)
-                        return print('Balance:\t',i[ac]["balance"])
-                    else:
-                        continue
-            return print('Account not found!!!')
+            if(collection.find_one({"_id":ac},{"balance"})):
+                amt=float(input('Enter amount to be credited:\t'))
+                view=collection.find_one({"_id":ac},{"balance"})
+                balance=view['balance']
+                balance=balance+amt
+                collection.update_one({"_id":ac},{'$set':{'balance':balance}})
+                change=collection.find_one({"_id":ac},{"balance"})
+                print('Balance:', change['balance'])
+            else:
+                print('Account not found!!!!!')
         except Exception as msg:
             print(msg.__class__.__name__,' Occured!!!!')
     except ValueError:
         print('Please enter Numeric value only!!!')
+                        
     
 
 def debit():
-    f = open('sample.json',)        
-    data = json.load(f)
     try:
         ac=int(input('Enter Account No.:\t'))
         try:
-            for i in data['bank_account']:
-                for j in i:
-                    if ac in j:
-                        amt=float(input('Enter amount to be debited:\t'))
-                        if(i[ac]["balance"]>=amt):
-                            i[ac]["balance"]=float(i[ac]["balance"])-amt
-                            w_file=open('sample.json','w')
-                            json.dump(data,w_file,indent = 4)
-                            w_file.close()
-                            getData(ac)
-                            return print('Balance:\t',i[ac]["balance"])
-                        else:
-                            print('Insufficient Balance!!!')
-                    else:
-                        continue
-            return print('Account not found!!!')
+            if(collection.find_one({"_id":ac},{"balance"})):
+                amt=float(input('Enter amount to be debited:\t'))
+                view=collection.find_one({"_id":ac},{"balance"})
+                balance=view['balance']
+                if(balance>=amt):
+                    balance=balance-amt
+                    collection.update_one({"_id":ac},{'$set':{'balance':balance}})
+                    change=collection.find_one({"_id":ac},{"balance"})
+                    print('Balance:', change['balance'])
+                else:
+                    print('Insufficient Balance!!!')
+            else:
+                print('Account not found!!!!!')
         except Exception as msg:
             print(msg.__class__.__name__,' Occured!!!!')
     except ValueError:
         print('Please enter Numeric value only!!!')
     
 def balance():
-    f = open('sample.json',)        
-    data = json.load(f)
     try:
         ac=int(input('Enter Account No.:\t'))
         try:
-            for i in data['bank_account']:
-                for j in i:
-                    if str(ac) in j:
-                        return print('Balance:\t',i[str(ac)]["balance"])
-                    else:
-                        continue
-            return print('Account not found!!!')
+            if(collection.find_one({"_id":ac},{"balance"})):
+                view=collection.find_one({"_id":ac},{"balance"})
+                print('Balance:', view['balance'])
+            else:
+                print('Account not found!!!!!')
         except Exception as msg:
             print(msg.__class__.__name__,' Occured!!!!')
     except ValueError:
@@ -76,18 +66,8 @@ def balance():
     
 
 def getData(ac):
-    f = open('sample.py',)        
-    data = json.load(f)
-    try:
-        for i in data['bannk_account']:
-            for j in i:
-                if ac in j:
-                    return print('Name:\t',i[ac]["name"],'\nPassword:\t',i[ac]["password"],'\nAccount No.:\t',ac,'\nBalance:\t',i[ac]["balance"],'\nDate:\t',i[ac]["date"],'\nTime:\t',i[ac]["time"])
-                else:
-                    continue
-        return print('Account not found!!!')
-    except Exception as msg:
-        print(msg.__class__.__name__,' Occured!!!!')
+    view=collection.find_one({"_id":ac})
+    return print('Name:\t',view["name"],'\nPassword:\t',view["password"],'\nAccount No.:\t',ac,'\nBalance:\t',view["balance"],'\nDate:\t',view["date"],'\nTime:\t',view["time"])
    
 def create():
     name=input('Enter Name for new account:\t')
@@ -97,16 +77,14 @@ def create():
     date=dd.strftime("%d/%m/%Y")
     time=dd.strftime("%X")+" "+dd.strftime("%p")
     balance=0
-    dictionary = {"acno":acno,
+    dictionary = {"_id":acno,
             "name":name,
             "password": password,
             "balance":balance,
             "date":date,
             "time":time
 	}
-    client=pymongo.MongoClient('mongodb+srv://vaishnavi:8806812990@cluster0.acsdz4a.mongodb.net/test')
-    db=client['BankMng']
-    collection=db['bankAc']
+    
     collection.insert_one(dictionary)
     print('Account created Successfully!!')
     getData(str(acno))
